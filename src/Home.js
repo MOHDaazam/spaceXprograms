@@ -93,8 +93,8 @@ export default class Customers extends Component {
             successful_launches: new Set(successfulLaunches),
             successful_landings: new Set(successfulLandings),
           },
-          isLoading: false,
         });
+        setTimeout(()=>this.setState({isLoading:false}),200)
       });
     });
   };

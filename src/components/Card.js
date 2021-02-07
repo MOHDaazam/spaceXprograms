@@ -15,7 +15,7 @@ export default class Card extends Component {
     return (
       <div className="card-container flight-container">
         <div className="mission-patch-container">
-          <img src={flight.links.mission_patch} alt={flight.mission_name} className="mission-patch-img" />
+          <img src={flight.links.mission_patch_small} alt={flight.mission_name} className="mission-patch-img" />
         </div>
         <h4 className="mission-name">{`${flight.mission_name} #${flight.flight_number}`}</h4>
         {flight.mission_id.length > 0 ? (

@@ -1,3 +1,6 @@
+/* body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+} */
 .App {
   background-color: whitesmoke;
 }
@@ -114,8 +117,8 @@
   }
   .flight-container {
     height: 275px !important;
-    margin-top: 10% !important;
-    margin-bottom: 5% !important;
+    margin-top: 5% !important;
+    /* margin-bottom: 5% !important; */
   }
 }
 @media (min-width: 1440px) {
@@ -136,8 +139,7 @@
   }
   .flight-container {
     height: 300px !important;
-    margin-top: 10% !important;
-    margin-bottom: 5% !important;
+margin-top: 5% !important;
   }
 
   .main-page {
