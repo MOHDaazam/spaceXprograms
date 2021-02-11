@@ -1,20 +1,17 @@
 import React, { Component } from "react";
-import Card from "./components/Card.js";
-import Filters from "./components/Filters.js";
+import LaunchList from "./components/LaunchList/LaunchList.js";
+import Filters from "./components/Filters/Filters.js";
 import axios from "axios";
 let API = "https://api.spaceXdata.com/v3/launches?limit=100";
 
 // Home component of Space X app
-export default class Customers extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      spaceXdata: [],
-      filters: {},
-      isLoading: false,
-      activeFilters: {},
-    };
-  }
+export default class Home extends Component {
+  state = {
+    spaceXdata: [],
+    filters: {},
+    isLoading: false,
+    activeFilters: {},
+  };
   //Function which is called the first time the component loads
   componentDidMount() {
     this.setState({ isLoading: true });
@@ -94,53 +91,43 @@ export default class Customers extends Component {
             successful_landings: new Set(successfulLandings),
           },
         });
-        setTimeout(()=>this.setState({isLoading:false}),200)
+        setTimeout(() => this.setState({ isLoading: false }), 200);
       });
     });
   };
 
+  renderFilters = () => (
+    <Filters
+      filters={this.state.filters}
+      activeFilters={this.state.activeFilters}
+      handleFilters={this.handleFilters}
+    />
+  );
+  notFoundMessage = () => (
+    <h2  className="not-found-msg">
+      No result found !
+    </h2>
+  );
+  renderLaunchPrograms = () =>
+    this.state.spaceXdata.map((flight, i) => <LaunchList flight={flight} />);
+
+  lazyLoading = () => (
+    <div className="spinner"></div>
+  )
+
   render() {
     if (this.state.isLoading) {
-      return <h2 style={{ textAlign: "center" }}>Please wait...</h2>;
+      return this.lazyLoading();
     } else {
       return (
-        <div className="App">
-          <header className="header my-header ">
-            <h1 className="App-title">Space X Launch Programs</h1>
-          </header>
-
-          <section className="main-page">
-            <div className="col-md-3">
-              <Filters
-                filters={this.state.filters}
-                activeFilters={this.state.activeFilters}
-                handleFilters={this.handleFilters}
-              />
+        <main className="App">
+            <div className="filter-section">{this.renderFilters()}</div>
+            <div className="result-section">
+              {this.state.spaceXdata.length === 0
+                ? this.notFoundMessage()
+                : this.renderLaunchPrograms()}
             </div>
-
-            <div className="col-md-9 result-section">
-              {this.state.spaceXdata.length === 0 ? (
-                <h2 style={{ right: "40%",position: "absolute" }} className='xs-layout'>
-                  No result found !
-                </h2>
-              ) : (
-                this.state.spaceXdata.map((flight, i) => (
-                  <div
-                    key={i}
-                    className=""
-                  >
-                    <Card flight={flight} />
-                  </div>
-                ))
-              )}
-            </div>
-          </section>
-          <footer className="footer">
-            <h4 className="title-h5">
-              Developed by: <span className="text-span">Mohd Azam</span>
-            </h4>
-          </footer>
-        </div>
+        </main>
       );
     }
   }
