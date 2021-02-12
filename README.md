@@ -41,7 +41,7 @@ In order to run the application Type the following command
 npm start
 ```
 
-In order to buil the application Type the following command
+In order to build the application Type the following command
 
 ```bash
 npm run build

@@ -66,9 +66,11 @@
     background-color: #fff;
     border-radius: 5px;
   }
+
   .filters-container {
     min-width: 20%;
   }
+
   .not-found-msg {
     text-align: center;
     position: initial;
@@ -77,27 +79,41 @@
   .App-title {
     font-size: 18px;
   }
+
+  .spinner{
+    margin-bottom:40vh;
+  }
 }
 
 @media screen and (max-width: 1023px) and (min-width: 700px) {
+
   .App-title {
     font-size: 1em;
   }
+
   .App {
     grid-template-columns: minmax(auto, 30%) minmax(auto, 70%);
   }
+
   .result-section {
     display: grid;
     grid-template-columns: repeat(2, calc(50% - 5px));
     grid-gap: 10px;
   }
+
   .filters-container {
     min-width: 20%;
   }
+
   .not-found-msg {
     position: absolute;
     right: 25%;
   }
+
+  .spinner{
+    margin-bottom:50vh;
+  }
+
 }
 
 @media screen and (max-width: 1439px) and (min-width: 1024px) {
@@ -128,6 +144,10 @@
     background-color: #fff;
     border-radius: 5px;
     margin-top: 5%;
+  }
+
+  .spinner{
+    margin-bottom:60vh;
   }
 }
 
@@ -166,6 +186,10 @@
     display: table;
     min-height: 90vh;
     width: 1440px;
+  }
+
+  .spinner{
+    margin-bottom:65vh;
   }
 }
 
